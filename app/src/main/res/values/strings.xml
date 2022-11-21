@@ -5,4 +5,6 @@
     <string name="btn_save">Save</string>
     <string name="error_input_count">Invalid count</string>
     <string name="error_input_name">Invalid name</string>
+    <string name="add_new_item">Add new item</string>
+    <string name="my_shopping_list">MY SHOPPING LIST</string>
 </resources>

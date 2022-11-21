@@ -1,44 +1,41 @@
 package com.example.shoppinglist.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.R
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.example.shoppinglist.databinding.ActivityMainBinding
 import com.google.gson.Gson
 
-class MainActivity: AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener{
+class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
     private lateinit var viewModel: MainViewModel
     private lateinit var shopListAdapter: ShopListAdaptor
-    private var shopItemContainer: FragmentContainerView? = null
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        shopItemContainer = findViewById(R.id.shop_item_container)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         if (viewModel.checkShopListEmptiness()) viewModel.setShopListFromPreferences()
         setupRecyclerView()
 
-        val buttonDelete = findViewById<ImageButton>(R.id.btn_delete)
-
         viewModel.shopList.observe(this) {
             shopListAdapter.submitList(it)
-            if(it.isNotEmpty()) buttonDelete.visibility = View.VISIBLE
-            else buttonDelete.visibility = View.GONE
+            if (it.isNotEmpty()) binding.btnDelete.visibility = View.VISIBLE
+            else binding.btnDelete.visibility = View.GONE
         }
 
-        val buttonAddItem = findViewById<FloatingActionButton>(R.id.button_add_shop_item)
-        buttonAddItem.setOnClickListener {
+        binding.buttonAddShopItem.setOnClickListener {
             if (isOnePaneMode()) {
                 val intent = ShopItemActivity.newIntentAddItem(this)
                 startActivity(intent)
@@ -47,7 +44,7 @@ class MainActivity: AppCompatActivity(), ShopItemFragment.OnEditingFinishedListe
             }
         }
 
-        buttonDelete.setOnClickListener{
+        binding.btnDelete.setOnClickListener {
             viewModel.cleanShopList()
             Log.d("MyLogInfo", "Clean the list")
         }
@@ -59,8 +56,8 @@ class MainActivity: AppCompatActivity(), ShopItemFragment.OnEditingFinishedListe
     }
 
     private fun setupRecyclerView() {
-        val rvShopList = findViewById<RecyclerView>(R.id.rv_shop_list)
-        with(rvShopList) {
+        //val rvShopList = findViewById<RecyclerView>(R.id.rv_shop_list)
+        with(binding.rvShopList) {
             shopListAdapter = ShopListAdaptor()
             adapter = shopListAdapter
             recycledViewPool.setMaxRecycledViews(
@@ -74,11 +71,11 @@ class MainActivity: AppCompatActivity(), ShopItemFragment.OnEditingFinishedListe
         }
         setupLongClickListener()
         setupClickListener()
-        setupSwipeListener(rvShopList)
+        setupSwipeListener(binding.rvShopList)
     }
 
     private fun isOnePaneMode(): Boolean {
-        return shopItemContainer == null
+        return binding.shopItemContainer == null
     }
 
     private fun launchFragment(fragment: Fragment) {
@@ -134,11 +131,11 @@ class MainActivity: AppCompatActivity(), ShopItemFragment.OnEditingFinishedListe
         saveData()
     }
 
-    private fun saveData(){
-        val pref =  getSharedPreferences("root_data", MODE_PRIVATE)
+    private fun saveData() {
+        val pref = getSharedPreferences("root_data", MODE_PRIVATE)
         val editor = pref.edit()
-        val jsonListItem: String = Gson().toJson(viewModel.shopList.value);
-        if(!pref.getString("jsonShopList","").equals(jsonListItem)) {
+        val jsonListItem: String = Gson().toJson(viewModel.shopList.value)
+        if (!pref.getString("jsonShopList", "").equals(jsonListItem)) {
             Log.d("Debug", jsonListItem)
             editor.putString("jsonShopList", jsonListItem)
             editor.apply()

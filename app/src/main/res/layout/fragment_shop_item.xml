@@ -1,111 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".presentation.ShopItemFragment">
+<layout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_name"
-        android:layout_width="0dp"
-        android:layout_height="82dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@android:drawable/edit_text"
-        android:elevation="1dp"
-        android:gravity="top"
-        android:paddingBottom="0dp"
-        android:textColorHint="@color/teal_700"
-        app:boxStrokeColor="@color/teal_700"
-        app:boxStrokeWidth="2dp"
-        app:endIconDrawable="@android:drawable/ic_dialog_info"
-        app:endIconTint="@color/teal_700"
-        app:errorEnabled="true"
-        app:errorIconDrawable="@android:drawable/ic_menu_info_details"
-        app:errorIconTint="@color/purple_200"
-        app:errorTextColor="@color/purple_200"
-        app:expandedHintEnabled="true"
-        app:layout_constraintBottom_toTopOf="@+id/til_count"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed">
+    <data>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_name"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="-12dp"
-            android:backgroundTint="@color/teal_700"
-            android:hint="@string/name_field"
-            android:inputType="textCapWords"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:textColor="@color/teal_700" />
+        <variable
+            name="viewModel"
+            type="com.example.shoppinglist.presentation.ShopItemViewModel" />
+    </data>
 
-    </com.google.android.material.textfield.TextInputLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".presentation.ShopItemFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_count"
-        android:layout_width="0dp"
-        android:layout_height="82dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="52dp"
-        android:background="@android:drawable/edit_text"
-        android:elevation="1dp"
-        android:gravity="top"
-        android:paddingBottom="0dp"
-        android:textColorHint="@color/teal_700"
-        app:boxStrokeColor="@color/teal_700"
-        app:boxStrokeWidth="2dp"
-        app:endIconDrawable="@android:drawable/ic_dialog_info"
-        app:endIconTint="@color/teal_700"
-        app:errorEnabled="true"
-        app:errorIconDrawable="@android:drawable/ic_menu_info_details"
-        app:errorIconTint="@color/purple_200"
-        app:errorTextColor="@color/purple_200"
-        app:expandedHintEnabled="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_name">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_name"
+            android:layout_width="0dp"
+            android:layout_height="82dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@android:drawable/edit_text"
+            android:elevation="1dp"
+            android:gravity="top"
+            android:paddingBottom="0dp"
+            android:textColorHint="@color/teal_700"
+            app:boxStrokeColor="@color/teal_700"
+            app:boxStrokeWidth="2dp"
+            app:endIconDrawable="@android:drawable/ic_dialog_info"
+            app:endIconTint="@color/teal_700"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@android:drawable/ic_menu_info_details"
+            app:errorIconTint="@color/purple_200"
+            app:errorInputName="@{viewModel.errorInputName}"
+            app:errorTextColor="@color/purple_200"
+            app:expandedHintEnabled="true"
+            app:layout_constraintBottom_toTopOf="@+id/til_count"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_count"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="-12dp"
-            android:backgroundTint="@color/teal_700"
-            android:hint="@string/count_field"
-            android:inputType="number"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:textColor="@color/teal_700" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="-12dp"
+                android:backgroundTint="@color/teal_700"
+                android:hint="@string/name_field"
+                android:inputType="textCapWords"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="@{viewModel.shopItem.name!=null ? viewModel.shopItem.name : null}"
+                android:textColor="@color/teal_700" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/save_button"
-        android:layout_width="136dp"
-        android:layout_height="62dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="#03A9F4"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:text="@string/btn_save"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_count"
-        tools:ignore="TextContrastCheck" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_count"
+            android:layout_width="0dp"
+            android:layout_height="82dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="52dp"
+            android:background="@android:drawable/edit_text"
+            android:elevation="1dp"
+            android:gravity="top"
+            android:paddingBottom="0dp"
+            android:textColorHint="@color/teal_700"
+            app:boxStrokeColor="@color/teal_700"
+            app:boxStrokeWidth="2dp"
+            app:endIconDrawable="@android:drawable/ic_dialog_info"
+            app:endIconTint="@color/teal_700"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@android:drawable/ic_menu_info_details"
+            app:errorIconTint="@color/purple_200"
+            app:errorInputCount="@{viewModel.errorInputCount}"
+            app:errorTextColor="@color/purple_200"
+            app:expandedHintEnabled="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_name">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_count"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="-12dp"
+                android:backgroundTint="@color/teal_700"
+                android:hint="@string/count_field"
+                android:inputType="number"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="@{viewModel.shopItem.count!=0 ? String.valueOf(viewModel.shopItem.count) : null}"
+                android:textColor="@color/teal_700" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="136dp"
+            android:layout_height="62dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="#03A9F4"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="@string/btn_save"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_count"
+            tools:ignore="TextContrastCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

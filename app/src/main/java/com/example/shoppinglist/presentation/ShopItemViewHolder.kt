@@ -1,12 +1,10 @@
 package com.example.shoppinglist.presentation
 
-import android.view.View
-import android.widget.TextView
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shoppinglist.R
+import com.example.shoppinglist.databinding.ItemDisabledBinding
 
 //Class for the view holder to hold the generated views
-class ShopItemViewHolder (val view: View) : RecyclerView.ViewHolder(view) {
-    val tvName: TextView = view.findViewById<TextView>(R.id.p_name)
-    val tvCount: TextView = view.findViewById<TextView>(R.id.p_count)
-}
+class ShopItemViewHolder(
+    val binding: ViewDataBinding
+) : RecyclerView.ViewHolder(binding.root)
