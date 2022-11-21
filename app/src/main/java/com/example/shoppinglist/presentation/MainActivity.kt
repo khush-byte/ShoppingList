@@ -1,13 +1,10 @@
 package com.example.shoppinglist.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -46,7 +43,6 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
 
         binding.btnDelete.setOnClickListener {
             viewModel.cleanShopList()
-            Log.d("MyLogInfo", "Clean the list")
         }
     }
 
@@ -136,10 +132,9 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
         val editor = pref.edit()
         val jsonListItem: String = Gson().toJson(viewModel.shopList.value)
         if (!pref.getString("jsonShopList", "").equals(jsonListItem)) {
-            Log.d("Debug", jsonListItem)
             editor.putString("jsonShopList", jsonListItem)
             editor.apply()
-            Log.d("MyLogInfo", "SaveData")
+            //Log.d("MyLogInfo", "SaveData")
         }
     }
 }

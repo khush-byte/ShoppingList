@@ -1,11 +1,7 @@
 package com.example.shoppinglist.presentation
 
-import android.util.Log
-import android.widget.EditText
 import androidx.databinding.BindingAdapter
 import com.example.shoppinglist.R
-import com.example.shoppinglist.domain.ShopItem
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
 @BindingAdapter("errorInputName")

@@ -60,7 +60,7 @@ object ShopListRepositoryImpl : ShopListRepository {
     //Implementation of the list update function
     override fun setShopList(shopList: List<ShopItem>) {
         cleanShopList()
-        for (item in shopList){
+        for (item in shopList) {
             val shopItem = ShopItem(item.name, item.count, item.enabled)
             addShopItem(shopItem)
         }
@@ -71,7 +71,7 @@ object ShopListRepositoryImpl : ShopListRepository {
         shopListLiveData.value = shopList.toList()
     }
 
-    override fun cleanShopList(){
+    override fun cleanShopList() {
         shopList.clear()
         updateList()
     }

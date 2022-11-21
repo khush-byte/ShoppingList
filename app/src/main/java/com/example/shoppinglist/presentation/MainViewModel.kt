@@ -2,7 +2,6 @@ package com.example.shoppinglist.presentation
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import com.example.shoppinglist.data.ShopListRepositoryImpl
 import com.example.shoppinglist.domain.*
@@ -43,7 +42,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
         setShopListUseCase.setList(shopList)
-        Log.d("MyLogInfo", "ViewModel")
     }
 
     //Get shop list
@@ -52,7 +50,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     //Delete all items in shop list
-    fun cleanShopList(){
+    fun cleanShopList() {
         cleanShopListUseCase.cleanShopList()
     }
 }
