@@ -35,38 +35,13 @@ class ShopListRepositoryImpl(
         return mapper.mapDbModelToEntity(dbModel)
     }
 
-    //Implementation of the get list function
-//    override fun getShopList(): LiveData<List<ShopItem>> = MediatorLiveData<List<ShopItem>>().apply {
-//        addSource(shopListDao.getShopList()){
-////            if(it.size>10){
-//    //                value = it
-////            }
-//            value = mapper.mapListDbModelToListEntity(it)
-//        }
-//    }
-
     override fun getShopList(): LiveData<List<ShopItem>> = Transformations.map(
         shopListDao.getShopList()
     ) {
         mapper.mapListDbModelToListEntity(it)
     }
 
-//    //Implementation of the list update function
-//    override fun setShopList(shopList: List<ShopItem>) {
-//        cleanShopList()
-//        for (item in shopList) {
-//            val shopItem = ShopItem(item.name, item.count, item.enabled)
-//            addShopItem(shopItem)
-//        }
-//    }
-//
-//    //Passing the item's list to the live date
-//    private fun updateList() {
-//        shopListLiveData.value = shopList.toList()
-//    }
-//
-//    override fun cleanShopList() {
-//        shopList.clear()
-//        updateList()
-//    }
+    override fun cleanShopList() {
+        shopListDao.cleanShopList()
+    }
 }

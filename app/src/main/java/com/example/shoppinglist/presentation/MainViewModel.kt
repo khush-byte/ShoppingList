@@ -9,11 +9,10 @@ import com.google.gson.Gson
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     //Variables init
-    private val repository = ShopListRepositoryImpl
+    private val repository = ShopListRepositoryImpl(application)
     private val getShopListUseCase = GetShopListUseCase(repository)
     private val deleteShopItemUseCase = DeleteShopItemUseCase(repository)
     private val editShopItemUseCase = EditShopItemUseCase(repository)
-    private val setShopListUseCase = SetShopListUseCase(repository)
     private val cleanShopListUseCase = CleanShopListUseCase(repository)
     var shopList = getShopListUseCase.getList()
     private val _application = application
@@ -32,17 +31,17 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     //Rewrite the livedata
-    fun setShopListFromPreferences() {
-        var shopList: List<ShopItem> = emptyList()
-        val pref = _application.getSharedPreferences("root_data", Context.MODE_PRIVATE)
-        val jsonList: String? = pref.getString("jsonShopList", "")
-        if (jsonList != null) {
-            if (jsonList.isNotEmpty()) {
-                shopList = Gson().fromJson(jsonList, Array<ShopItem>::class.java).asList()
-            }
-        }
-        setShopListUseCase.setList(shopList)
-    }
+//    fun setShopListFromPreferences() {
+//        var shopList: List<ShopItem> = emptyList()
+//        val pref = _application.getSharedPreferences("root_data", Context.MODE_PRIVATE)
+//        val jsonList: String? = pref.getString("jsonShopList", "")
+//        if (jsonList != null) {
+//            if (jsonList.isNotEmpty()) {
+//                shopList = Gson().fromJson(jsonList, Array<ShopItem>::class.java).asList()
+//            }
+//        }
+//        setShopListUseCase.setList(shopList)
+//    }
 
     //Get shop list
     fun checkShopListEmptiness(): Boolean {

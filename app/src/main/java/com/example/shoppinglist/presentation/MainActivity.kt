@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        if (viewModel.checkShopListEmptiness()) viewModel.setShopListFromPreferences()
+        //if (viewModel.checkShopListEmptiness()) viewModel.setShopListFromPreferences()
         setupRecyclerView()
 
         viewModel.shopList.observe(this) {
@@ -122,19 +122,19 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
         }
     }
 
-    override fun onStop() {
-        super.onStop()
-        saveData()
-    }
+//    override fun onStop() {
+//        super.onStop()
+//        saveData()
+//    }
 
-    private fun saveData() {
-        val pref = getSharedPreferences("root_data", MODE_PRIVATE)
-        val editor = pref.edit()
-        val jsonListItem: String = Gson().toJson(viewModel.shopList.value)
-        if (!pref.getString("jsonShopList", "").equals(jsonListItem)) {
-            editor.putString("jsonShopList", jsonListItem)
-            editor.apply()
-            //Log.d("MyLogInfo", "SaveData")
-        }
-    }
+//    private fun saveData() {
+//        val pref = getSharedPreferences("root_data", MODE_PRIVATE)
+//        val editor = pref.edit()
+//        val jsonListItem: String = Gson().toJson(viewModel.shopList.value)
+//        if (!pref.getString("jsonShopList", "").equals(jsonListItem)) {
+//            editor.putString("jsonShopList", jsonListItem)
+//            editor.apply()
+//            //Log.d("MyLogInfo", "SaveData")
+//        }
+//    }
 }
