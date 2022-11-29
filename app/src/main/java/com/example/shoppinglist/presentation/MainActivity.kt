@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.R
 import com.example.shoppinglist.databinding.ActivityMainBinding
-import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
     private lateinit var viewModel: MainViewModel
@@ -121,20 +120,4 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
             viewModel.changeEnableState(it)
         }
     }
-
-//    override fun onStop() {
-//        super.onStop()
-//        saveData()
-//    }
-
-//    private fun saveData() {
-//        val pref = getSharedPreferences("root_data", MODE_PRIVATE)
-//        val editor = pref.edit()
-//        val jsonListItem: String = Gson().toJson(viewModel.shopList.value)
-//        if (!pref.getString("jsonShopList", "").equals(jsonListItem)) {
-//            editor.putString("jsonShopList", jsonListItem)
-//            editor.apply()
-//            //Log.d("MyLogInfo", "SaveData")
-//        }
-//    }
 }

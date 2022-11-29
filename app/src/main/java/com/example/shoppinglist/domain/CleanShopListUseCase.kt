@@ -1,7 +1,7 @@
 package com.example.shoppinglist.domain
 
 class CleanShopListUseCase(private var shopListRepository: ShopListRepository) {
-    fun cleanShopList(){
+    suspend fun cleanShopList(){
         shopListRepository.cleanShopList()
     }
 }
