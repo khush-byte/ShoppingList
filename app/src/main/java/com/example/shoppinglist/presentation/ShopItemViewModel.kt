@@ -10,9 +10,6 @@ import com.example.shoppinglist.domain.AddShopItemUseCase
 import com.example.shoppinglist.domain.EditShopItemUseCase
 import com.example.shoppinglist.domain.GetShopItemUseCase
 import com.example.shoppinglist.domain.ShopItem
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class ShopItemViewModel(application: Application) : AndroidViewModel(application) {
@@ -22,25 +19,15 @@ class ShopItemViewModel(application: Application) : AndroidViewModel(application
     private val addShopItemUseCase = AddShopItemUseCase(repository)
     private val editShopItemUseCase = EditShopItemUseCase(repository)
 
-    //private val scope = CoroutineScope(Dispatchers.Main)
-
     //Check input name
     private val _errorInputName = MutableLiveData<Boolean>()
     val errorInputName: LiveData<Boolean>
         get() = _errorInputName
 
-    fun getErrorInputNameLiveData(): LiveData<Boolean> {
-        return errorInputName
-    }
-
     //Check input count
     private val _errorInputCount = MutableLiveData<Boolean>()
     val errorInputCount: LiveData<Boolean>
         get() = _errorInputCount
-
-    fun getErrorInputCountLiveData(): LiveData<Boolean> {
-        return errorInputCount
-    }
 
     //Get item list from liveData
     private val _shopItem = MutableLiveData<ShopItem>()
@@ -130,9 +117,4 @@ class ShopItemViewModel(application: Application) : AndroidViewModel(application
     private fun finishWork() {
         _shouldCloseScreen.value = Unit
     }
-//
-//    override fun onCleared() {
-//        super.onCleared()
-//        scope.cancel()
-//    }
 }

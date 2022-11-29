@@ -5,11 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shoppinglist.data.ShopListRepositoryImpl
 import com.example.shoppinglist.domain.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-import kotlin.coroutines.coroutineContext
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     //Variables init
@@ -19,8 +15,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val deleteShopItemUseCase = DeleteShopItemUseCase(repository)
     private val editShopItemUseCase = EditShopItemUseCase(repository)
     private val cleanShopListUseCase = CleanShopListUseCase(repository)
-
-    //private val scope = CoroutineScope(Dispatchers.Main)
 
     var shopList = getShopListUseCase.getList()
 
@@ -47,10 +41,5 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             cleanShopListUseCase.cleanShopList()
         }
     }
-
-//    override fun onCleared() {
-//        super.onCleared()
-//        scope.cancel()
-//    }
 }
 
