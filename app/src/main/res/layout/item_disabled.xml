@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,8 +9,7 @@
             type="com.example.shoppinglist.domain.ShopItem" />
     </data>
 
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -23,11 +23,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:background="#C6DFDA"
+            android:layout_height="wrap_content"
+            android:background="#C4D6D8"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="16dp">
+            android:padding="18dp">
 
             <TextView
                 android:id="@+id/p_name"
@@ -37,7 +37,7 @@
                 android:fontFamily="sans-serif-light"
                 android:text="@{shopItem.name}"
                 android:textColor="#DAECEC"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -47,7 +47,7 @@
                 android:fontFamily="sans-serif-light"
                 android:text="@{String.valueOf(shopItem.count)}"
                 android:textColor="#DAECEC"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

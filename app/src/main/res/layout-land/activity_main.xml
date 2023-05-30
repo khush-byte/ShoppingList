@@ -92,7 +92,7 @@
             android:focusable="true"
             android:scaleType="center"
             android:tint="@color/white"
-            app:backgroundTint="#03A9F4"
+            app:backgroundTint="@color/main"
             app:borderWidth="2dp"
             app:elevation="5dp"
             app:fabCustomSize="67dp"

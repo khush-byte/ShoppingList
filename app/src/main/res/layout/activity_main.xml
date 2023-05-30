@@ -12,9 +12,10 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:background="@drawable/background_main"
+            android:layout_height="0dp"
+            android:background="@drawable/main_background"
             android:elevation="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -38,7 +39,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginBottom="12dp"
                 android:fontFamily="casual"
                 android:text="@string/my_shopping_list"
                 android:textColor="@color/white"
@@ -48,8 +49,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.5"
                 tools:ignore="TextContrastCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -57,7 +56,7 @@
             android:id="@+id/rv_shop_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="4dp"
             android:layout_marginBottom="56dp"
             android:contentDescription="@string/app_name"
             android:visibility="visible"
@@ -66,7 +65,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="@+id/guideline2"
             tools:listitem="@layout/item_enabled" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -80,7 +79,7 @@
             android:focusable="true"
             android:scaleType="center"
             android:tint="@color/white"
-            app:backgroundTint="#03A9F4"
+            app:backgroundTint="@color/main"
             app:borderWidth="2dp"
             app:elevation="5dp"
             app:fabCustomSize="67dp"
@@ -90,6 +89,13 @@
             app:maxImageSize="33dp"
             app:srcCompat="@android:drawable/ic_input_add"
             tools:ignore="ImageContrastCheck" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.08" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
